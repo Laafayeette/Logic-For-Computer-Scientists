@@ -1,0 +1,26 @@
+[
+[server_off, [server_initialized_no_users_connected]],
+[server_initialized_no_users_connected, [user_connected_no_requests]],
+[user_connected_no_requests, [server_initialized_no_users_connected, processing_requests]],
+[processing_requests, [user_connected_no_requests, server_off, request_takes_long_time]],
+[request_takes_long_time, [processing_requests, user_connected_no_requests, server_initialized_no_users_connected]]
+].
+
+[
+[server_off, [neg(t), neg(c), neg(r)]],
+[server_initialized_no_users_connected, [t, neg(c), neg(r)]],
+[user_connected_no_requests, [t, c, neg(r)]],
+[processing_requests, [t, c, r]],
+[request_takes_long_time, [t, c, r, rlong]]
+].
+
+
+processing_requests.
+ag(and(t, or(c,r))).
+
+%request_takes_long_time.
+%neg(ex(neg(t))).
+
+
+
+
